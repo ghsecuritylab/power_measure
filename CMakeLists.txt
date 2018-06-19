@@ -1055,7 +1055,7 @@ ADD_EXECUTABLE(blinky
         mbed-os/targets/TARGET_STM/us_ticker_16b.c
         mbed-os/targets/TARGET_STM/us_ticker_32b.c
         mbed_config.h
-        src/DRV_INA129.cpp src/DRV_INA129.h)
+        src/DRV_INA129.cpp src/DRV_INA129.h src/Usainmonitor.h)
 SET_TARGET_PROPERTIES(blinky PROPERTIES ENABLE_EXPORTS 1)
 # add syslibs dependencies to create the correct linker order
 TARGET_LINK_LIBRARIES(blinky -lstdc++ -lsupc++ -lm -lc -lgcc -lnosys)

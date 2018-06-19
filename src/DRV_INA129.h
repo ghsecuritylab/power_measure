@@ -90,28 +90,28 @@
 #define INA219_CONFIG_MODE_SANDBVOLT_CONTINUOUS	(0x0007)
 
 
-I2C I2C_BUS(PB_9, PB_8);
-Serial UART(USBTX, USBRX, 57600);
-const int INA129_LEFT_MOTOR_ADDRESS = 0b1000000;
+static I2C I2C_BUS(PB_9, PB_8);
+static Serial UART(USBTX, USBRX, 57600);
+//const int INA129_LEFT_MOTOR_ADDRESS = 0b01000000;
+const int INA129_LEFT_MOTOR_ADDRESS = 0b01000001;
 
 class INA129
 {
 public:
-    INA129(const int address);
+    INA129();
 
     ~INA129();
 
     float get_bus_voltage();
 
-    float get_current();
+    float get_config();
+
+private:
+    const int _address;
 
     int read_register(uint8_t register_address, uint16_t *value);
 
-    int write_register(uint8_t register_address);
-
-
-private:
-    const int address;
+    int write_register(uint8_t register_address, uint8_t *data, uint8_t data_size);
 };
 
 #endif //BLINKY_DRV_INA129_H
